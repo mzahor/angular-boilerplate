@@ -2,7 +2,7 @@
 
 'use strict';
 
-describe('Unit: MovieComponent', function() {
+describe('Unit: MoviesComponent', function() {
 
     let element;
     let scope;
@@ -12,11 +12,8 @@ describe('Unit: MovieComponent', function() {
 
         angular.mock.inject(($compile, $rootScope) => {
             scope = $rootScope;
-            scope.movie = {
-                name: 'Superman'
-            };
             let jElement = angular.element(
-                '<movie movie="movie">Sample Directive</movie>'
+                '<movies></movie>'
             );
 
             $compile(jElement)(scope);
@@ -26,15 +23,7 @@ describe('Unit: MovieComponent', function() {
     });
 
     it('should render template', function() {
-        expect(element.querySelector('.movie-component')).not.toBe(null);
+        expect(element.querySelector('.movies-component')).not.toBe(null);
     });
-
-    it('should render movie name', function() {
-        expect(html()).toContain('Superman');
-    });
-
-    function html() {
-        return element.innerHTML;
-    }
 
 });
