@@ -1,4 +1,6 @@
 import angular from 'angular';
+import restangular from 'restangular';
+import _ from 'lodash';
 
 // angular modules
 import constants from './constants';
@@ -13,6 +15,7 @@ import './movies';
 const requires = [
     // 3rd party modules
     'ui.router',
+    'restangular',
     // compiled html templates
     'templates',
     // feature modules

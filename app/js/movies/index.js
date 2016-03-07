@@ -9,8 +9,10 @@ function register(obj) {
 import MovieComponent from './components/movie.component';
 register(MovieComponent);
 
-import MoviesComponent from './components/movies.component';
-register(MoviesComponent);
+import MoviesViewComponent from './components/movies.view.component';
+register(MoviesViewComponent);
 
+import MoviesService from './services/movies.service';
+register(MoviesService);
 
 export default moviesModule;

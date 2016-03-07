@@ -1,4 +1,4 @@
-function OnConfig($stateProvider, $locationProvider, $urlRouterProvider) {
+function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, RestangularProvider) {
     'ngInject';
 
     $locationProvider.html5Mode(true);
@@ -6,12 +6,13 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider) {
     $stateProvider
         .state('movies', {
             url: '/movies',
-            template: '<movies></movies>',
+            template: '<movies-view></movies-view>',
             title: 'Movies',
         });
 
     $urlRouterProvider.otherwise('/movies');
 
+    RestangularProvider.setBaseUrl('/api/');
 }
 
 export default OnConfig;

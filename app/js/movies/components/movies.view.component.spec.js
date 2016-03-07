@@ -13,7 +13,7 @@ describe('Unit: MoviesComponent', function() {
         angular.mock.inject(($compile, $rootScope) => {
             scope = $rootScope;
             let jElement = angular.element(
-                '<movies></movie>'
+                '<movies-view></movies-view>'
             );
 
             $compile(jElement)(scope);
@@ -23,7 +23,7 @@ describe('Unit: MoviesComponent', function() {
     });
 
     it('should render template', function() {
-        expect(element.querySelector('.movies-component')).not.toBe(null);
+        expect(element.querySelector('.movies-view-component')).not.toBe(null);
     });
 
 });
