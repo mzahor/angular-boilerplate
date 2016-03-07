@@ -6,8 +6,6 @@ Based on [great boilerplate](https://github.com/jakemmarsh/angularjs-gulp-browse
 
 [View contributors](https://github.com/mzahor/angularjs-boilerplate/graphs/contributors)
 
----
-
 ### Getting up and running
 
 1. Clone this repo from `https://github.com/mzahor/angularjs-boilerplate.git`
@@ -18,13 +16,6 @@ Based on [great boilerplate](https://github.com/jakemmarsh/angularjs-gulp-browse
 
 Now that `gulp dev` is running, the server is up as well and serving files from the `/build` directory. Any changes in the `/app` directory will be automatically processed by Gulp and the changes will be injected to any open browsers pointed at the proxy address.
 
-#### Other resources
-
-- [Yeoman generator](https://github.com/alferov/generator-angular-gulp-browserify)
-- [Cordova-friendly fork](https://github.com/StrikeForceZero/angularjs-cordova-gulp-browserify-boilerplate)
-
----
-
 This boilerplate uses the latest versions of the following libraries:
 
 - [AngularJS](http://angularjs.org/)
@@ -34,8 +25,6 @@ This boilerplate uses the latest versions of the following libraries:
 
 Along with many Gulp libraries (these can be seen in either `package.json`, or at the top of each task in `/gulp/tasks/`).
 
----
-
 ### AngularJS
 
 AngularJS is a MVW (Model-View-Whatever) Javascript Framework for creating single-page web applications. In this boilerplate, it is used for all the application routing as well as all of the frontend views and logic.
@@ -43,18 +32,16 @@ AngularJS is a MVW (Model-View-Whatever) Javascript Framework for creating singl
 The AngularJS files are all located within `/app/js`, structured in the following manner:
 
 ```
-/controllers
-  index.js   (the main module on which all controllers will be mounted, loaded in main.js)
-  example.js
-/directives
-  index.js   (the main module on which all directives will be mounted, loaded in main.js)
-  example.js
-/filters
-  index.js (the main module on which all filters will be mounted, loaded in main.js)
-  example.js
-/services
-  index.js   (the main module on which all services will be mounted, loaded in main.js)
-  example.js
+/common (common functionality for all modules)
+    /components
+    /directives
+    /filters
+    /services
+/movies (application module, can be many of them)
+    /components
+    /directives
+    /services
+    /filters 
 constants.js  (any constant values that you want to make available to Angular)
 main.js       (the main file read by Browserify, also where the application is defined and bootstrapped)
 on_run.js     (any functions or logic that need to be executed on app.run)
