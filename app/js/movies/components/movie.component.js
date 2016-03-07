@@ -14,7 +14,7 @@ function MovieComponent() {
     };
 
     function MovieComponentController() {
-        var ctrl = this;
+        // var ctrl = this;
     }
 }
 
