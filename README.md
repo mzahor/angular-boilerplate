@@ -89,60 +89,9 @@ function MyService($http) {
 
 needs to be added at the very beginning of any Angular functions/modules. The Gulp tasks will then take care of adding any dependency injection, requiring you to only specify the dependencies within the function parameters and nothing more.
 
----
-
-### SASS
-
-SASS, standing for 'Syntactically Awesome Style Sheets', is a CSS extension language adding things like extending, variables, and mixins to the language. This boilerplate provides a barebones file structure for your styles, with explicit imports into `app/styles/main.scss`. A Gulp task (discussed later) is provided for compilation and minification of the stylesheets based on this file.
-
----
-
-### Browserify
-
-Browserify is a Javascript file and module loader, allowing you to `require('modules')` in all of your files in the same manner as you would on the backend in a node.js environment. The bundling and compilation is then taken care of by Gulp, discussed below.
-
----
-
-### Gulp
-
-Gulp is a "streaming build system", providing a very fast and efficient method for running your build tasks.
-
 ##### Web Server
 
 Gulp is used here to provide a very basic node/Express web server for viewing and testing your application as you build. It serves static files from the `build/` directory, leaving routing up to AngularJS. All Gulp tasks are configured to automatically reload the server upon file changes. The application is served to `localhost:3002` once you run the `gulp` task. To take advantage of the fast live reload injection provided by browser-sync, you must load the site at the proxy address (within this boilerplate will by default be `localhost:3000`). To change the settings related to live-reload or browser-sync, you can access the UI at `localhost:3001`.
-
-##### Scripts
-
-A number of build processes are automatically run on all of our Javascript files, run in the following order:
-
-- **JSHint:** Gulp is currently configured to run a JSHint task before processing any Javascript files. This will show any errors in your code in the console, but will not prevent compilation or minification from occurring.
-- **Browserify:** The main build process run on any Javascript files. This processes any of the `require('module')` statements, compiling the files as necessary.
-- **Babelify:** This uses [babelJS](https://babeljs.io/) to provide support for ES6+ features.
-- **Debowerify:** Parses `require()` statements in your code, mapping them to `bower_components` when necessary. This allows you to use and include bower components just as you would npm modules.
-- **ngAnnotate:** This will automatically add the correct dependency injection to any AngularJS files, as mentioned previously.
-- **Uglifyify:** This will minify the file created by Browserify and ngAnnotate.
-
-The resulting file (`main.js`) is placed inside the directory `/build/js/`.
-
-##### Styles
-
-Just one plugin is necessary for processing our SASS files, and that is `gulp-sass`. This will read the `main.scss` file, processing and importing any dependencies and then minifying the result. This file (`main.css`) is placed inside the directory `/build/css/`.
-
-- **gulp-autoprefixer:** Gulp is currently configured to run autoprefixer after compiling the scss.  Autoprefixer will use the data based on current browser popularity and property support to apply prefixes for you. Autoprefixer is recommended by Google and used in Twitter, WordPress, Bootstrap and CodePen.
-
-##### Images
-
-Any images placed within `/app/images` will be automatically copied to the `build/images` directory. If running `gulp prod`, they will also be compressed via imagemin.
-
-##### Views
-
-When any changes are made to the `index.html` file, the new file is simply copied to the `/build/` directory without any changes occurring.
-
-Files inside `/app/views/`, on the other hand, go through a slightly more complex process. The `gulp-angular-templatecache` module is used in order to process all views/partials, creating the `template.js` file briefly mentioned earlier. This file will contain all the views, now in Javascript format inside Angular's `$templateCache` service. This will allow us to include them in our Javascript minification process, as well as avoid extra HTTP requests for our views.
-
-##### Watching files
-
-All of the Gulp processes mentioned above are run automatically when any of the corresponding files in the `/app` directory are changed, and this is thanks to our Gulp watch tasks. Running `gulp dev` will begin watching all of these files, while also serving to `localhost:3002`, and with browser-sync proxy running at `localhost:3000` (by default).
 
 ##### Production Task
 
@@ -166,6 +115,10 @@ This boilerplate also includes a simple framework for unit and end-to-end (e2e) 
 
 All of the tests can be run at once with the command `gulp test`. However, the tests are broken up into two main categories:
 
+##### TDD
+
+There is a task for TDD development: `gulp tdd`
+
 ##### End-to-End (e2e) Tests
 
 e2e tests, as hinted at by the name, consist of tests that involve multiple modules or require interaction between modules, similar to integration tests. These tests are carried out using the Angular library [Protractor](https://github.com/angular/protractor), which also utilizes Jasmine. The goal is to ensure that the flow of your application is performing as designed from start to finish.
@@ -184,15 +137,3 @@ All e2e tests are run with `gulp protractor`.
 - before running the Protractor tests, the application server must be running (start it with `gulp dev`)
 - the Protractor library used for the end-to-end tests may require installing the [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html) beforehand.
 
-##### Unit Tests
-
-Unit tests are used to test a single module (or "unit") at a time in order to ensure that each module performs as intended individually. In AngularJS this could be thought of as a single controller, directive, filter, service, etc. That is how the unit tests are organized in this boilerplate.
-
-An example test is provided for the following types of AngularJS modules:
-
-- `unit/controllers/example_spec.js`
-- `unit/services/example_spec.js`
-- `unit/directives/example_spec.js`
-- `unit/constants_spec.js`
-
-All unit tests are run with `gulp unit`. When running unit tests, code coverage is simultaneously calculated and output as an HTML file to the `/coverage` directory.
