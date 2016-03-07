@@ -1,18 +1,18 @@
-function OnConfig($stateProvider, $locationProvider, $urlRouterProvider) {
+function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, RestangularProvider) {
     'ngInject';
 
     $locationProvider.html5Mode(true);
 
     $stateProvider
-        .state('Home', {
-            url: '/',
-            controller: 'ExampleCtrl as home',
-            templateUrl: 'home.html',
-            title: 'Home'
+        .state('movies', {
+            url: '/movies',
+            template: '<movies-view></movies-view>',
+            title: 'Movies',
         });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/movies');
 
+    RestangularProvider.setBaseUrl('/api/');
 }
 
 export default OnConfig;

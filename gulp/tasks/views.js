@@ -7,13 +7,12 @@ import merge from 'merge-stream';
 import templateCache from 'gulp-angular-templatecache';
 
 // Views task
-gulp.task('views', function() {
+gulp.task('views', ['clean'], function() {
 
     // Put our index.html in the dist folder
     const indexFile = gulp.src(config.views.index)
         .pipe(gulp.dest(config.buildDir));
 
-    // Process any other view files from app/views
     const views = gulp.src(config.views.src)
         .pipe(templateCache({
             standalone: true

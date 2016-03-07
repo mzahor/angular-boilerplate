@@ -1,10 +1,18 @@
 {
-    "folders":
-    [
-        {
-            "path": ".",
-            "file_exclude_patterns": [],
-            "folder_exclude_patterns": ["coverage", "dist", "node_modules"]
-        },
-    ],
+	"folders":
+	[
+		{
+			"folder_exclude_patterns":
+			[
+				"coverage",
+				"dist",
+				"build",
+				"node_modules"
+			],
+			"path": "."
+		},
+		{
+			"path": "/home/seedx/dev/generator-angular-cognitive"
+		}
+	]
 }
