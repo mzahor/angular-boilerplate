@@ -12,7 +12,7 @@ function MoviesServiceRegistrator() {
 
         function getMovies() {
             return movies.getList().then(function(response) {
-                return response.$object;
+                return response;
             });
         }
 

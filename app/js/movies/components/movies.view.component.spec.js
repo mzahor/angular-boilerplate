@@ -2,7 +2,7 @@
 
 'use strict';
 
-describe('Unit: MoviesComponent', function() {
+describe('Unit: MoviesViewComponent', function() {
 
     let element;
     let scope;
@@ -10,7 +10,13 @@ describe('Unit: MoviesComponent', function() {
     beforeEach(function() {
         angular.mock.module('app.movies');
 
-        angular.mock.inject(($compile, $rootScope) => {
+        angular.mock.inject(($compile, $rootScope, _MoviesService_, $q) => {
+            let movies = [
+                {name: 'Superman'},
+                {name: 'Ironman'},
+            ]; 
+            spyOn(_MoviesService_, 'getMovies').and.returnValue($q.when(movies));
+
             scope = $rootScope;
             let jElement = angular.element(
                 '<movies-view></movies-view>'
@@ -24,6 +30,19 @@ describe('Unit: MoviesComponent', function() {
 
     it('should render template', function() {
         expect(element.querySelector('.movies-view-component')).not.toBe(null);
+    });
+
+    it('should render movies', function() {
+        let movieComponents = element.querySelectorAll('.movie-component');
+        expect(movieComponents).not.toBe(null);
+        expect(movieComponents.length).toBe(2);
+    });
+
+    it('should render movie names', function() {
+        // we need this test to check parent->child bindings
+        // there is no need to check all other propreties
+        let movieComponent = element.querySelector('.movie-component');
+        expect(movieComponent.innerHTML).toContain('Superman');
     });
 
 });
