@@ -93,11 +93,9 @@ needs to be added at the very beginning of any Angular functions/modules. The Gu
 
 Gulp is used here to provide a very basic node/Express web server for viewing and testing your application as you build. It serves static files from the `build/` directory, leaving routing up to AngularJS. All Gulp tasks are configured to automatically reload the server upon file changes. The application is served to `localhost:3002` once you run the `gulp` task. To take advantage of the fast live reload injection provided by browser-sync, you must load the site at the proxy address (within this boilerplate will by default be `localhost:3000`). To change the settings related to live-reload or browser-sync, you can access the UI at `localhost:3001`.
 
-##### Production Task
+##### Api server proxy
 
-Just as there is the `gulp dev` task for development, there is also a `gulp prod` task for putting your project into a production-ready state. This will run each of the tasks, while also adding the image minification task discussed above. There is also an empty `gulp deploy` task that is included when running the production task. This deploy task can be fleshed out to automatically push your production-ready site to your hosting setup.
-
-**Reminder:** When running the production task, gulp will not fire up the express server and serve your index.html. This task is designed to be run before the `deploy` step that may copy the files from `/build` to a production web server.
+There is a simple `testServer` which exposes `/movies` endpoint. You can run it with `gulp testServer`. Frontend is connected to it using proxy middleware which resides in `browserSync` gulp task. Proxy target is configurable, so you can redirect it to any server you want depending on your needs (use `proxyTarget` property in `/gulp/config.js`). Test server is also used to run e2e tests. If you want to run your e2e tests with another backend - change baseUrl in `protractor.conf.js`.
 
 ##### Pre-compressing text assets
 
@@ -130,4 +128,10 @@ All e2e tests are run with `gulp protractor`.
 
 - before running the Protractor tests, the application server must be running (start it with `gulp dev`)
 - the Protractor library used for the end-to-end tests may require installing the [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html) beforehand.
+
+##### Production Task
+
+Just as there is the `gulp dev` task for development, there is also a `gulp prod` task for putting your project into a production-ready state. This will run each of the tasks, while also adding the image minification task discussed above. There is also an empty `gulp deploy` task that is included when running the production task. This deploy task can be fleshed out to automatically push your production-ready site to your hosting setup.
+
+**Reminder:** When running the production task, gulp will not fire up the express server and serve your index.html. This task is designed to be run before the `deploy` step that may copy the files from `/build` to a production web server.
 
