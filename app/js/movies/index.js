@@ -6,11 +6,11 @@ function register(obj) {
     moviesModule[obj.type](obj.name, obj.fn());
 }
 
-import MovieComponent from './components/movie.component';
-register(MovieComponent);
-
 import MoviesViewComponent from './components/movies.view.component';
 register(MoviesViewComponent);
+
+import MovieComponent from './components/movie.component';
+register(MovieComponent);
 
 import MoviesService from './services/movies.service';
 register(MoviesService);

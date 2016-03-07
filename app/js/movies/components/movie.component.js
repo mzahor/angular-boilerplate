@@ -4,7 +4,9 @@ function MovieComponent() {
         restrict: 'E',
         template: `
             <div class="movie-component">
-              <h1>{{$ctrl.movie.name}}</h1>
+              <h3>{{$ctrl.movie.name}}</h3>
+              <div class="rate-yes">{{$ctr.movie.rateYes}}</div>
+              <div class="rate-no">{{$ctr.movie.rateNo}}</div>
             </div>
         `,
         bindings: {
