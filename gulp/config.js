@@ -4,6 +4,10 @@ export default {
 
     browserPort: 3000,
     UIPort: 3001,
+    proxyTarget: 'http://localhost:3003',
+    testServer: {
+        port: 3003,
+    },
 
     sourceDir: './app/',
     buildDir: './build/',

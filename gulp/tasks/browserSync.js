@@ -1,5 +1,3 @@
-'use strict';
-
 import config from '../config';
 import url from 'url';
 import browserSync from 'browser-sync';
@@ -12,8 +10,8 @@ gulp.task('browserSync', function() {
     const ASSET_EXTENSION_REGEX = new RegExp(`\\b(?!\\?)\\.(${config.assetExtensions.join('|')})\\b(?!\\.)`, 'i');
 
     var proxy = proxyMiddleware('/api', {
-        target: 'http://localhost:3003/',
-        changeOrigin: false   // for vhosted sites, changes host header to match to target's host
+        target: config.proxyTarget,
+        changeOrigin: false // for vhosted sites, changes host header to match to target's host
     });
 
     browserSync.init({
@@ -29,7 +27,7 @@ gulp.task('browserSync', function() {
                     }
 
                     return next();
-                }, 
+                },
             ],
         },
         port: config.browserPort,

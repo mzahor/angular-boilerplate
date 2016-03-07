@@ -1,17 +1,15 @@
-'use strict';
-
 import express from 'express';
 import morgan from 'morgan';
 
 export default function testServer({
     port,
     dir,
-    logger
+    useLogger
 }) {
 
     const app = express();
 
-    if (logger) {
+    if (useLogger) {
         app.use(morgan('dev'));
     }
     app.use(express.static(dir));
