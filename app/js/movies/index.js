@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-const moviesModule = angular.module('app.movies', ['restangular']);
+const moviesModule = angular.module('app.movies', ['templates', 'restangular']);
 
 function register(obj) {
     moviesModule[obj.type](obj.name, obj.fn());

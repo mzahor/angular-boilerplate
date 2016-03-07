@@ -2,11 +2,7 @@ function MoviesViewComponent() {
 
     return {
         restrict: 'E',
-        template: `
-            <div class="movies-view-component">
-              <movie movie="movie" ng-repeat="movie in $ctrl.movies"></movie>
-            </div>
-        `,
+        templateUrl: 'movies/components/movies.view.component.html',
         controller: MoviesViewComponentController
     };
 
