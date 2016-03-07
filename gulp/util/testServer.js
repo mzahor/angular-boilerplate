@@ -13,7 +13,7 @@ export default function testServer({ port, dir }) {
     app.get('/api/movies/', function(req, res) {
         res.send([
             {
-                name: 'Supername',
+                name: 'Superman',
             }, {
                 name: 'Ironman',
             }
