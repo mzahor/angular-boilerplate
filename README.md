@@ -59,17 +59,22 @@ templates.js  (this is created via Gulp by compiling your views, and will not be
 
 ##### Module organization
 
-Controllers, services, directives, etc. should all be placed within their respective folders, and will be automatically required and mounted via their respective `index.js` using `bulk-require`. All modules must export an object of the format:
+Controllers, services, directives, etc. should all be placed within their respective folders, and should be required and mounted via their respective `index.js`. All modules must export an object of the format:
 
 ```javascript
-const ExampleModule = function() {};
+const MovieComponent = function() {};
 
 export default {
-  name: 'ExampleModule',
-  fn: ExampleModule
+    name: 'MovieComponent',
+    // possible options are:
+    // 'component', 'service', 'directive', 'filter', 'factory', 'service'
+    type: 'component', 
+    // this function will be called to get the object for registration
+    fn: MovieComponent,
 };
 
 ```
+Take a look at `/movies/index.js` for example.
 
 ##### Dependency injection
 
