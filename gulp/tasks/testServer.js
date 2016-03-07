@@ -9,7 +9,8 @@ gulp.task('testServer', function(cb) {
 
     testServer({
         port: config.browserPort + 3,
-        dir: config.buildDir
+        dir: config.buildDir,
+        logger: true,
     }).then((server) => {
         console.log('Running');
     });

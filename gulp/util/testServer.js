@@ -5,12 +5,15 @@ import morgan from 'morgan';
 
 export default function testServer({
     port,
-    dir
+    dir,
+    logger
 }) {
 
     const app = express();
 
-    // app.use(morgan('dev'));
+    if (logger) {
+        app.use(morgan('dev'));
+    }
     app.use(express.static(dir));
 
     app.get('/api/movies/', function(req, res) {
