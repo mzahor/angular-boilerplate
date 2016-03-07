@@ -33,14 +33,22 @@ The AngularJS files are all located within `/app/js`, structured in the followin
 
 ```
 /common (common functionality for all modules)
-    /components
-    /directives
-    /filters
-    /services
+    /components (common components)
+    /directives (common directives)
+    /filters (common filters)
+    /services (common services)
 /movies (application module, can be many of them)
     /components
-    /directives
-    /services
+        movie.component.js (simple component, contains html and logic)
+        movie.component.scss (styling for movie.component)
+        movie.component.spec.js (tests for movie.component)
+        movies.view.component.html (separate html for component)
+        movies.view.component.js (view component, responsible for rendering the
+whole route)
+        movies.view.component.scss (styling for view component)
+        movies.view.component.spec.js (tests for view component)
+    /directives (non-component directives)
+    /services (services which should contain business logic)
     /filters 
 constants.js  (any constant values that you want to make available to Angular)
 main.js       (the main file read by Browserify, also where the application is defined and bootstrapped)
