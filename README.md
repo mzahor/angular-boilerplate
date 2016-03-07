@@ -16,6 +16,11 @@ Based on [great boilerplate](https://github.com/jakemmarsh/angularjs-gulp-browse
 
 Now that `gulp dev` is running, the server is up as well and serving files from the `/build` directory. Any changes in the `/app` directory will be automatically processed by Gulp and the changes will be injected to any open browsers pointed at the proxy address.
 
+To run tests:
+
+- `gulp test` - will run unit tests as well as e2e.
+- `gulp tdd` - will run unit tests and watch for changes, then run tests again in a cycle
+
 This boilerplate uses the latest versions of the following libraries:
 
 - [AngularJS](http://angularjs.org/)
