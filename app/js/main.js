@@ -1,6 +1,6 @@
 import angular from 'angular';
-import restangular from 'restangular';
-import _ from 'lodash';
+import 'restangular';
+import 'lodash';
 
 // angular modules
 import constants from './constants';
