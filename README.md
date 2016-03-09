@@ -96,11 +96,22 @@ needs to be added at the very beginning of any Angular functions/modules. The Gu
 
 ##### Web Server
 
-Gulp is used here to provide a very basic node/Express web server for viewing and testing your application as you build. It serves static files from the `build/` directory, leaving routing up to AngularJS. All Gulp tasks are configured to automatically reload the server upon file changes. The application is served to `localhost:3002` once you run the `gulp` task. To take advantage of the fast live reload injection provided by browser-sync, you must load the site at the proxy address (within this boilerplate will by default be `localhost:3000`). To change the settings related to live-reload or browser-sync, you can access the UI at `localhost:3001`.
+There are 2 web server tasks:
+- `gulp testServer` - runs Express.js server (port 3003 by default)
+- `gulp dev` - runs browserSync (port 3000 for app, 3001 for browserSync
+  settings)
+
+The first one has basic backend api implementation and is used for protractor.
+Second one hosts UI files and uses proxy middleware to connect to backend api,
+which may reside on another server.
+
+Usually you will use `gulp dev` for development as it rebuils the bundle and
+reloads the website every time you change a file. You can reconfigure the proxy
+to point to any backend server you want (see next section).
 
 ##### Api server proxy
 
-There is a simple `testServer` which exposes `/movies` endpoint. You can run it with `gulp testServer`. Frontend is connected to it using proxy middleware which resides in `browserSync` gulp task. Proxy target is configurable, so you can redirect it to any server you want depending on your needs (use `proxyTarget` property in `/gulp/config.js`). Test server is also used to run e2e tests. If you want to run your e2e tests with another backend - change baseUrl in `protractor.conf.js`.
+There is a simple `testServer` which exposes `/api/movies` endpoint. You can run it with `gulp testServer`. Frontend is connected to it using proxy middleware which resides in `browserSync` gulp task. Proxy target is configurable, so you can redirect it to any server you want depending on your needs (use `proxyTarget` property in `/gulp/config.js`). Test server is also used to run e2e tests. If you want to run your e2e tests with another backend - change baseUrl in `protractor.conf.js`.
 
 ##### Pre-compressing text assets
 
