@@ -90,5 +90,5 @@
     "webdriver-update": "./node_modules/.bin/webdriver-manager update",
     "postinstall": "npm run webdriver-update"
   },
-  "license": "MIT",
+  "license": "MIT"
 }
